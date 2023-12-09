@@ -3,7 +3,7 @@ from pathlib import Path
 import cv2
 
 
-# https://stackoverflow.com/questions/64096953/how-to-convert-yolo-format-bounding-box-coordinates-into-opencv-format
+# https://stackoverflow.com/a/64097592/16660603
 def yolobbox2bbox(coords: list, size: int) -> list:
     x, y, w, h = coords
 
