@@ -3,6 +3,7 @@ from pathlib import Path
 import cv2
 
 
+# https://stackoverflow.com/questions/64096953/how-to-convert-yolo-format-bounding-box-coordinates-into-opencv-format
 def yolobbox2bbox(coords: list, size: int) -> list:
     x, y, w, h = coords
 
@@ -40,7 +41,7 @@ if __name__ == '__main__':
     annotation_path = data_path + rf'\{name}\obj_train_data\{name}.txt'
 
     image = cv2.imread(image_path)
-    image = cv2.resize(image, (img_size, img_size)) # Resize from 2264x2264 to 566x566 px
+    # image = cv2.resize(image, (img_size, img_size))
 
     annotation_list = load_annotation(annotation_path)
 
