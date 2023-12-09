@@ -50,11 +50,9 @@ if __name__ == '__main__':
 
         x, y, w, h = yolobbox2bbox(al[1:], size=img_size)
         cv2.rectangle(image, (x, w), (y, h), color, 2)
-
-    #cv2.imshow('Himanshu', image)
-
-    #cv2.waitKey(0) # Esc
     
     cv2.imwrite(data_path + rf'\{name}_box_output.jpg', image)
 
+    #cv2.imshow('Himanshu', image)
+    #cv2.waitKey(0) # Esc
     #cv2.destroyAllWindows()
