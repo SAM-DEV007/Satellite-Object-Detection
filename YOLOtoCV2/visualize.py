@@ -8,16 +8,16 @@ def yolobbox2bbox(coords: list, size: int) -> list:
     x, y, w, h = coords
 
     x1 = int((x - w / 2) * size)
-    y1 = int((x + w / 2) * size)
-    x2 = int((y - h / 2) * size)
+    x2 = int((x + w / 2) * size)
+    y1 = int((y - h / 2) * size)
     y2 = int((y + h / 2) * size)
     
     if x1 < 0:
         x1 = 0
-    if y1 > size - 1:
-        y1 = size - 1
-    if x2 < 0:
-        x2 = 0
+    if x2 > size - 1:
+        x2 = size - 1
+    if y2 < 0:
+        y1 = 0
     if y2 > size - 1:
         y2 = size - 1
 
@@ -49,7 +49,7 @@ if __name__ == '__main__':
         color = [(255, 0, 0), (0, 0, 255), (0, 255, 0)][int(al[0])]
 
         x, y, w, h = yolobbox2bbox(al[1:], size=img_size)
-        cv2.rectangle(image, (x, w), (y, h), color, 2)
+        cv2.rectangle(image, (x, y), (w, h), color, 2)
     
     cv2.imwrite(data_path + rf'\{name}_box_output.jpg', image)
 
