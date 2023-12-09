@@ -54,6 +54,6 @@ if __name__ == '__main__':
 
     #cv2.waitKey(0) # Esc
     
-    cv2.imwrite(data_path + rf'\{name}_box.jpg', image)
+    cv2.imwrite(data_path + rf'\{name}_box_output.jpg', image)
 
     #cv2.destroyAllWindows()
