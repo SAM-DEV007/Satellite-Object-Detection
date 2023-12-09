@@ -33,7 +33,7 @@ def load_annotation(path: str) -> list:
 
 if __name__ == '__main__':
     name = 'himanshu'
-    img_size = 566
+    img_size = 2264
 
     data_path = str(Path.cwd()) + r'\YOLOtoCV2\Sample Data'
     image_path = data_path + rf'\{name}.jpeg'
@@ -43,12 +43,17 @@ if __name__ == '__main__':
     image = cv2.resize(image, (img_size, img_size)) # Resize from 2264x2264 to 566x566 px
 
     annotation_list = load_annotation(annotation_path)
-    x, y, w, h = yolobbox2bbox(annotation_list[0][1:], size=img_size)
 
-    image = cv2.rectangle(image, (x, w), (y, h), (255, 0, 0), 2)
+    for al in annotation_list:
+        color = [(255, 0, 0), (0, 0, 255), (0, 255, 0)][int(al[0])]
 
-    cv2.imshow('Himanshu', image)
+        x, y, w, h = yolobbox2bbox(al[1:], size=img_size)
+        cv2.rectangle(image, (x, w), (y, h), color, 2)
 
-    cv2.waitKey(0) # Esc
+    #cv2.imshow('Himanshu', image)
 
-    cv2.destroyAllWindows()
+    #cv2.waitKey(0) # Esc
+    
+    cv2.imwrite(data_path + rf'\{name}_box.jpg', image)
+
+    #cv2.destroyAllWindows()
