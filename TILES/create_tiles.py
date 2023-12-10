@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import os
+
 
 def tile(bounds, _class, x_start, y_start, width, height):
     x_min, y_min, x_max, y_max = bounds
@@ -65,6 +67,13 @@ if __name__ == '__main__':
     data_path = str(Path.cwd()) + r'\TILES\InputData'
     image_path = data_path + rf'\{name}.jpeg'
     annotation_path = data_path + rf'\{name}\obj_train_data\{name}.txt'
+
+    output_folder_path = str(Path.cwd()) + r'\TILES\OutputData'
+    output_paths = [output_folder_path + r'\images', output_folder_path + r'\labels']
+
+    for _path in output_paths:
+        if not os.path.isdir(_path):
+            os.makedirs(output_folder_path)
 
     annotation_list = load_annotation(annotation_path)
     coords_list = [yolobbox2bbox(al, size=size) for al in annotation_list]
