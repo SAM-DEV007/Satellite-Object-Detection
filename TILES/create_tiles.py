@@ -1,29 +1,32 @@
 from pathlib import Path
 
+import numpy as np
+
 import os
+import cv2
 
 
-def tile(bounds, _class, x_start, y_start, width, height):
-    x_min, y_min, x_max, y_max = bounds
+def tile(bounds, x_start, y_start, size):
+    _class, x_min, y_min, x_max, y_max = bounds
     x_min, y_min, x_max, y_max = x_min - x_start, y_min - y_start, x_max - x_start, y_max - y_start
 
-    if (x_min > width) or (x_max < 0.0) or (y_min > height) or (y_max < 0.0):
+    if (x_min > size) or (x_max < 0.0) or (y_min > size) or (y_max < 0.0):
         return None
     
-    x_max_trunc = min(x_max, width) 
+    x_max_trunc = min(x_max, size) 
     x_min_trunc = max(x_min, 0) 
     if (x_max_trunc - x_min_trunc) / (x_max - x_min) < 0.3:
         return None
 
-    y_max_trunc = min(y_max, width) 
+    y_max_trunc = min(y_max, size) 
     y_min_trunc = max(y_min, 0) 
     if (y_max_trunc - y_min_trunc) / (y_max - y_min) < 0.3:
         return None
         
-    x_center = (x_min_trunc + x_max_trunc) / 2.0 / width
-    y_center = (y_min_trunc + y_max_trunc) / 2.0 / height
-    x_extend = (x_max_trunc - x_min_trunc) / width
-    y_extend = (y_max_trunc - y_min_trunc) / height
+    x_center = (x_min_trunc + x_max_trunc) / 2.0 / size
+    y_center = (y_min_trunc + y_max_trunc) / 2.0 / size
+    x_extend = (x_max_trunc - x_min_trunc) / size
+    y_extend = (y_max_trunc - y_min_trunc) / size
     
     return (_class, x_center, y_center, x_extend, y_extend)
 
@@ -74,6 +77,9 @@ if __name__ == '__main__':
     for _path in output_paths:
         if not os.path.isdir(_path):
             os.makedirs(_path)
+    
+    image = cv2.imread(image_path)
+    # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     annotation_list = load_annotation(annotation_path)
     coords_list = [yolobbox2bbox(al, size=size) for al in annotation_list]
@@ -91,3 +97,21 @@ if __name__ == '__main__':
             y_start = y_end - tile_size
 
             # print(x_start, y_start, x_end, y_end)
+
+            save_tile_path = output_paths[0] + rf'\{name}_{x_start}_{y_start}.jpg'
+            save_label_path = output_paths[1] + rf'\{name}_{x_start}_{y_start}.txt'
+
+            cut_tile = np.zeros(shape=(tile_size, tile_size, 3), dtype=np.uint8)
+            cut_tile[0:tile_size, 0:size, :] = image[y_start:y_end, x_start:x_end, :]
+            cv2.imwrite(save_tile_path, cut_tile)
+
+            found_tags = [
+                tile(bounds, x_start, y_start, tile_size)
+                for bounds in coords_list]
+            found_tags = [el for el in found_tags if el is not None]
+
+            # print(found_tags)
+
+            with open(save_label_path, 'w+') as f:
+                for tags in found_tags:
+                    f.write(' '.join(str(x) for x in tags) + '\n')
