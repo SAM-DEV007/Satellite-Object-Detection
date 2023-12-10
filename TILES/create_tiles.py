@@ -73,7 +73,7 @@ if __name__ == '__main__':
 
     for _path in output_paths:
         if not os.path.isdir(_path):
-            os.makedirs(output_folder_path)
+            os.makedirs(_path)
 
     annotation_list = load_annotation(annotation_path)
     coords_list = [yolobbox2bbox(al, size=size) for al in annotation_list]
