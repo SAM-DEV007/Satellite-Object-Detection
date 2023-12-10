@@ -44,21 +44,20 @@ if __name__ == '__main__':
     if not os.path.isdir(annot_save_path):
         os.makedirs(annot_save_path)
 
+    img_data = os.listdir(data_paths[0])
+    label_data = os.listdir(data_paths[1])
 
-    """
-    image_path = data_path + rf'\{name}.jpeg'
-    annotation_path = data_path + rf'\{name}\obj_train_data\{name}.txt'
+    for i in range(len(img_data)):
+        image_path = data_paths[0] + rf'\{img_data[i]}'
+        annotation_path = data_paths[1] + rf'\{label_data[i]}'
 
-    image = cv2.imread(image_path)
-    # image = cv2.resize(image, (img_size, img_size))
+        image = cv2.imread(image_path)
+        annotation_list = load_annotation(annotation_path)
 
-    annotation_list = load_annotation(annotation_path)
+        for al in annotation_list:
+            color = [(255, 0, 0), (0, 0, 255), (0, 255, 0)][int(al[0])]
 
-    for al in annotation_list:
-        color = [(255, 0, 0), (0, 0, 255), (0, 255, 0)][int(al[0])]
-
-        x, y, w, h = yolobbox2bbox(al[1:], size=img_size)
-        cv2.rectangle(image, (x, y), (w, h), color, 2)
-    
-    cv2.imwrite(data_path + rf'\{name}_box_output.jpg', image)
-    """
+            x, y, w, h = yolobbox2bbox(al[1:], size=img_size)
+            cv2.rectangle(image, (x, y), (w, h), color, 2)
+        
+        cv2.imwrite(annot_save_path + rf'\{img_data[i]}', image)
