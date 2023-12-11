@@ -148,5 +148,5 @@ if __name__ == '__main__':
     python \Model\Dataset\dataset.yaml --weights \Model\Model_Data\yolov5s.pt 
 
     Detection -
-    python \Model\Model_Data\yolov5/detect.py --source \Model\Model_Data\best.pt --conf 0.2
+    python \Model\Model_Data\yolov5\detect.py --source \Model\Model_Data\best.pt --conf 0.2
     """
