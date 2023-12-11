@@ -27,10 +27,20 @@ The idea is to detect how good the model is to detect specific objects along wit
 **NOTE: The datasets used is REALLY small. 10 different 1124 x 1124 px images are used, which are then tiled to ~100 images (training and validation combined). To prevent overfitting, the images are tiled only after splitting in train and validation.**
 
 # Inference
+### Commands:
 - `python .\Model\Dataset\dataset.yaml --weights .\Model\Model_Data\yolov5s.pt` to train the model. The best weights will be saved in `.\yolov5\runs\train\exp\weights\best.pt`.
 - `python .\Model\Model_Data\yolov5\detect.py --source .\Model\Model_Data\best.pt --conf 0.2` to run the inference on the images folder and detect the classes. For this model, the optimal confidence is `0.2`.
 
+### Outputs:
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/a7b87997-47ac-4e34-961c-d19cb6a6f8e0" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/e62697ed-e97a-4fa2-8a4b-d8b1efa95180" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/de00e28c-edfc-4896-a5bc-f0a96af65057" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/f386a375-d1f3-4345-ac32-eeb4e1ab981c" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/432ea8b4-6caf-47dd-b1e2-50577c4e2d65" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/7d4aaf58-8f11-45d7-9730-e585104fb561" width=250 height=250>
+
 # Contribution
+
 1. Samyak Waghdhare
 2. Giridhar Bargaley
 3. Rudra Shrivastava
