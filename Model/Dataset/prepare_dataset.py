@@ -60,27 +60,15 @@ def load_annotation(path: str) -> list:
     return ann
 
 
-if __name__ == '__main__':
-    tile_size = 576
-    tile_overlap = 64
+def train_val_split(mode: str, _images: list, _annot: list, save_path: str, tile_size: int, tile_overlap: int) -> None:
+    for i in range(len(_images)):
+        _img_name = _images[i]
+        _annot_name = _annot[i]
 
-    data_path = str(Path.cwd()) + r'\Model\Dataset\Manual_Data'
-    save_path = str(Path.cwd()) + r'\Model\Dataset\Model_Dataset'
+        image_path = data_path + rf'\{mode}\images\{_img_name}'
+        annotation_path = data_path + rf'\{mode}\annotation\{_annot_name}'
 
-    images_train = os.listdir(data_path + r'\train\images').sort()
-    annot_train = os.listdir(data_path + r'\train\annotation').sort()
-
-    images_val = os.listdir(data_path + r'\val\images').sort()
-    annot_val = os.listdir(data_path + r'\val\annotation').sort()
-
-    for i in range(len(images_train)):
-        _img_name = images_train[i]
-        _annot_name = annot_train[i]
-
-        image_path = data_path + rf'\train\images\{_img_name}'
-        annotation_path = data_path + rf'\train\annotation\{_annot_name}'
-
-        output_paths = [save_path + r'\train\images', save_path + r'\train\labels']
+        output_paths = [save_path + rf'\{mode}\images', save_path + rf'\{mode}\labels']
         for _path in output_paths:
             if not os.path.isdir(_path):
                 os.makedirs(_path)
@@ -101,8 +89,8 @@ if __name__ == '__main__':
                 y_end = min((y + 1) * tile_size - tile_overlap * (y != 0), size)
                 y_start = y_end - tile_size
 
-                save_tile_path = output_paths[0] + rf'\{name}_{x_start}_{y_start}.jpg'
-                save_label_path = output_paths[1] + rf'\{name}_{x_start}_{y_start}.txt'
+                save_tile_path = output_paths[0] + rf'\{_img_name.split(".")[0]}_{x_start}_{y_start}.jpg'
+                save_label_path = output_paths[1] + rf'\{_annot_name.split(".")[0]}_{x_start}_{y_start}.txt'
 
                 cut_tile = np.zeros(shape=(tile_size, tile_size, 3), dtype=np.uint8)
                 cut_tile[0:tile_size, 0:size, :] = image[y_start:y_end, x_start:x_end, :]
@@ -116,3 +104,20 @@ if __name__ == '__main__':
                 with open(save_label_path, 'w+') as f:
                     for tags in found_tags:
                         f.write(' '.join(str(x) for x in tags) + '\n')
+
+
+if __name__ == '__main__':
+    tile_size = 576
+    tile_overlap = 64
+
+    data_path = str(Path.cwd()) + r'\Model\Dataset\Manual_Data'
+    save_path = str(Path.cwd()) + r'\Model\Dataset\Model_Dataset'
+
+    images_train = os.listdir(data_path + r'\train\images').sort()
+    annot_train = os.listdir(data_path + r'\train\annotation').sort()
+
+    images_val = os.listdir(data_path + r'\val\images').sort()
+    annot_val = os.listdir(data_path + r'\val\annotation').sort()
+
+    train_val_split('train', images_train, annot_train, save_path, tile_size, tile_overlap)
+    train_val_split('val', images_val, annot_val, save_path, tile_size, tile_overlap)
