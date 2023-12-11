@@ -123,3 +123,30 @@ if __name__ == '__main__':
 
     train_val_split('train', images_train, annot_train, save_path, tile_size, tile_overlap)
     train_val_split('val', images_val, annot_val, save_path, tile_size, tile_overlap)
+
+    CONFIG = """
+    # train and val datasets (image directory or *.txt file with image paths)
+    train: D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\Model_Dataset/train/
+    val: D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\Model_Dataset/val/
+
+    # number of classes
+    nc: 2
+
+    # class names
+    names: ['River', 'Lake']
+    """
+
+    with open(str(Path.cwd()) + rf'\Model\Dataset\dataset.yaml', "w") as f:
+        f.write(CONFIG)
+    
+    """
+    Commands:
+    git clone https://github.com/ultralytics/yolov5
+    pip install -r yolov5/requirements.txt
+
+    Train -
+    python D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5\train.py --cfg D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5\models\yolov5s.yaml --imgsz 576 --batch-size 5 --epochs 35 --data D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\dataset.yaml --weights D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5s.pt 
+
+    Detection -
+    python D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5/detect.py --source D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\Model_Dataset\val\images --img-size 576 --weights D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5/runs/train/exp/weights/best.pt --conf 0.2
+    """

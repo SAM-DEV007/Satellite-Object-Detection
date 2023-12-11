@@ -1,0 +1,11 @@
+
+    # train and val datasets (image directory or *.txt file with image paths)
+    train: D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\Model_Dataset/train/
+    val: D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\Model_Dataset/val/
+
+    # number of classes
+    nc: 2
+
+    # class names
+    names: ['River', 'Lake']
+    
