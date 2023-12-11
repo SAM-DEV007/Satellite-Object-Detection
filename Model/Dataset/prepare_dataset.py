@@ -117,8 +117,8 @@ if __name__ == '__main__':
     annot_train = os.listdir(data_path + r'\train\annotation')
     images_train.sort(); annot_train.sort()
 
-    images_val = os.listdir(data_path + r'\val\images').sort()
-    annot_val = os.listdir(data_path + r'\val\annotation').sort()
+    images_val = os.listdir(data_path + r'\val\images')
+    annot_val = os.listdir(data_path + r'\val\annotation')
     images_val.sort(); annot_val.sort()
 
     train_val_split('train', images_train, annot_train, save_path, tile_size, tile_overlap)
