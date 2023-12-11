@@ -62,9 +62,8 @@ def load_annotation(path: str) -> list:
 
 if __name__ == '__main__':
     name = 'himanshu'
-    size = 2264 # Original size
 
-    tile_size = 566
+    tile_size = 576
     tile_overlap = 64
 
     data_path = str(Path.cwd()) + r'\TILES\InputData'
@@ -79,6 +78,7 @@ if __name__ == '__main__':
             os.makedirs(_path)
     
     image = cv2.imread(image_path)
+    size = image.shape[0]
     # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     annotation_list = load_annotation(annotation_path)

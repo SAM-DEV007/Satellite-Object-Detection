@@ -35,7 +35,7 @@ def load_annotation(path: str) -> list:
 
 if __name__ == '__main__':
     name = 'himanshu'
-    img_size = 566
+    img_size = 576
 
     data_path = str(Path.cwd()) + r'\TILES\OutputData'
     data_paths = [data_path + r'\images', data_path + r'\labels']
@@ -52,6 +52,7 @@ if __name__ == '__main__':
         annotation_path = data_paths[1] + rf'\{label_data[i]}'
 
         image = cv2.imread(image_path)
+        img_size = image.shape[0]
         annotation_list = load_annotation(annotation_path)
 
         for al in annotation_list:

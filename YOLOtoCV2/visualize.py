@@ -34,13 +34,13 @@ def load_annotation(path: str) -> list:
 
 if __name__ == '__main__':
     name = 'himanshu'
-    img_size = 2264
 
     data_path = str(Path.cwd()) + r'\YOLOtoCV2\Sample Data'
     image_path = data_path + rf'\{name}.jpeg'
     annotation_path = data_path + rf'\{name}\obj_train_data\{name}.txt'
 
     image = cv2.imread(image_path)
+    img_size = image.shape[0]
     # image = cv2.resize(image, (img_size, img_size))
 
     annotation_list = load_annotation(annotation_path)
