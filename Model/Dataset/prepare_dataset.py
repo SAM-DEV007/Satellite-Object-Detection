@@ -113,11 +113,13 @@ if __name__ == '__main__':
     data_path = str(Path.cwd()) + r'\Model\Dataset\Manual_Data'
     save_path = str(Path.cwd()) + r'\Model\Dataset\Model_Dataset'
 
-    images_train = os.listdir(data_path + r'\train\images').sort()
-    annot_train = os.listdir(data_path + r'\train\annotation').sort()
+    images_train = os.listdir(data_path + r'\train\images')
+    annot_train = os.listdir(data_path + r'\train\annotation')
+    images_train.sort(); annot_train.sort()
 
     images_val = os.listdir(data_path + r'\val\images').sort()
     annot_val = os.listdir(data_path + r'\val\annotation').sort()
+    images_val.sort(); annot_val.sort()
 
     train_val_split('train', images_train, annot_train, save_path, tile_size, tile_overlap)
     train_val_split('val', images_val, annot_val, save_path, tile_size, tile_overlap)
