@@ -145,8 +145,8 @@ if __name__ == '__main__':
     pip install -r yolov5/requirements.txt
 
     Train -
-    python D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5\train.py --cfg D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5\models\yolov5s.yaml --imgsz 576 --batch-size 5 --epochs 35 --data D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\dataset.yaml --weights D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5s.pt 
+    python \Model\Dataset\dataset.yaml --weights \Model\Model_Data\yolov5s.pt 
 
     Detection -
-    python D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\yolov5/detect.py --source D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\Model_Dataset\val\images --img-size 576 --weights D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Model_Data\best.pt --conf 0.2
+    python \Model\Model_Data\yolov5/detect.py --source \Model\Model_Data\best.pt --conf 0.2
     """
