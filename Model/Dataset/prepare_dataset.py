@@ -153,5 +153,5 @@ if __name__ == '__main__':
     python .\Model\Model_Data\yolov5\train.py --cfg .\Model\Model_Data\yolov5\models\yolov5s.yaml --imgsz 576 --batch-size 6 --epochs 35 --data .\Model\Dataset\dataset.yaml --weights .\Model\Model_Data\yolov5s.pt 
 
     Detection -
-    python .\Model\Model_Data\yolov5\detect.py --img-size 576 --source .\Model\Model_Data\best.pt --conf 0.2
+    python .\Model\Model_Data\yolov5\detect.py --img-size 576 --source .\Model\Dataset\Model_Dataset\val\images --weights .\Model\Model_Data\best.pt --conf 0.2
     """
