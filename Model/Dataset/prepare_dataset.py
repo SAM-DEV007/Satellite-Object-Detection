@@ -55,7 +55,12 @@ def yolobbox2bbox(coords: list, size: int) -> list:
 def load_annotation(path: str) -> list:
     with open(path, 'r') as f:
         # [Class, cx, xy, w, h] 
-        ann = [list(map(float, line.replace('\n', '').split())) for line in f]
+        # ann = [list(map(float, line.replace('\n', '').split())) for line in f]
+
+        ann = []
+        for line in f:
+            val = list(map(float, line.replace('\n', '').split()))
+            if int(val[0]) != 2: ann.append(val)
 
     return ann
 
@@ -145,8 +150,8 @@ if __name__ == '__main__':
     pip install -r yolov5/requirements.txt
 
     Train -
-    python .\Model\Dataset\dataset.yaml --weights .\Model\Model_Data\yolov5s.pt 
+    python .\Model\Model_Data\yolov5\train.py --cfg .\Model\Model_Data\yolov5\models\yolov5s.yaml --imgsz 576 --batch-size 6 --epochs 35 --data .\Model\Dataset\dataset.yaml --weights .\Model\Model_Data\yolov5s.pt 
 
     Detection -
-    python .\Model\Model_Data\yolov5\detect.py --source .\Model\Model_Data\best.pt --conf 0.2
+    python .\Model\Model_Data\yolov5\detect.py --img-size 576 --source .\Model\Model_Data\best.pt --conf 0.2
     """
