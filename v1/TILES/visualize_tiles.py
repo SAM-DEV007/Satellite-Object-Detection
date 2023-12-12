@@ -37,10 +37,10 @@ if __name__ == '__main__':
     name = 'himanshu'
     img_size = 576
 
-    data_path = str(Path.cwd()) + r'\TILES\OutputData'
+    data_path = str(Path.cwd()) + r'\v1\TILES\OutputData'
     data_paths = [data_path + r'\images', data_path + r'\labels']
 
-    annot_save_path = str(Path.cwd()) + r'\TILES\TilesAnnotations'
+    annot_save_path = str(Path.cwd()) + r'\v1\TILES\TilesAnnotations'
     if not os.path.isdir(annot_save_path):
         os.makedirs(annot_save_path)
 

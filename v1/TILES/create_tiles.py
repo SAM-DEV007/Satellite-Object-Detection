@@ -66,11 +66,11 @@ if __name__ == '__main__':
     tile_size = 576
     tile_overlap = 64
 
-    data_path = str(Path.cwd()) + r'\TILES\InputData'
+    data_path = str(Path.cwd()) + r'\v1\TILES\InputData'
     image_path = data_path + rf'\{name}.jpeg'
     annotation_path = data_path + rf'\{name}\obj_train_data\{name}.txt'
 
-    output_folder_path = str(Path.cwd()) + r'\TILES\OutputData'
+    output_folder_path = str(Path.cwd()) + r'\v1\TILES\OutputData'
     output_paths = [output_folder_path + r'\images', output_folder_path + r'\labels']
 
     for _path in output_paths:

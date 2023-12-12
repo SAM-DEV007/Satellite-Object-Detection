@@ -115,8 +115,8 @@ if __name__ == '__main__':
     tile_size = 576
     tile_overlap = 64
 
-    data_path = str(Path.cwd()) + r'\Model\Dataset\Manual_Data'
-    save_path = str(Path.cwd()) + r'\Model\Dataset\Model_Dataset'
+    data_path = str(Path.cwd()) + r'\v1\Model\Dataset\Manual_Data'
+    save_path = str(Path.cwd()) + r'\v1\Model\Dataset\Model_Dataset'
 
     images_train = os.listdir(data_path + r'\train\images')
     annot_train = os.listdir(data_path + r'\train\annotation')
@@ -131,8 +131,8 @@ if __name__ == '__main__':
 
     CONFIG = """
     # train and val datasets (image directory or *.txt file with image paths)
-    train: D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\Model_Dataset/train/
-    val: D:\Projects\Hackathon\SIF_IISF_2023\Proof_of_Concept\Satellite-Object-Detection\Model\Dataset\Model_Dataset/val/
+    train: .\v1\Model\Dataset\Model_Dataset/train/
+    val: .\v1\Model\Dataset\Model_Dataset/val/
 
     # number of classes
     nc: 2
@@ -150,8 +150,8 @@ if __name__ == '__main__':
     pip install -r yolov5/requirements.txt
 
     Train -
-    python .\Model\Model_Data\yolov5\train.py --cfg .\Model\Model_Data\yolov5\models\yolov5s.yaml --imgsz 576 --batch-size 6 --epochs 35 --data .\Model\Dataset\dataset.yaml --weights .\Model\Model_Data\yolov5s.pt 
+    python .\v1\Model\Model_Data\yolov5\train.py --cfg .\v1\Model\Model_Data\yolov5\models\yolov5s.yaml --imgsz 576 --batch-size 6 --epochs 35 --data .\v1\Model\Dataset\dataset.yaml --weights .\v1\Model\Model_Data\yolov5s.pt 
 
     Detection -
-    python .\Model\Model_Data\yolov5\detect.py --img-size 576 --source .\Model\Dataset\Model_Dataset\val\images --weights .\Model\Model_Data\best.pt --conf 0.2
+    python .\v1\Model\Model_Data\yolov5\detect.py --img-size 576 --source .\v1\Model\Dataset\Model_Dataset\val\images --weights .\v1\Model\Model_Data\best.pt --conf 0.2
     """

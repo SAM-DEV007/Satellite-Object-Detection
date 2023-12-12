@@ -35,7 +35,7 @@ def load_annotation(path: str) -> list:
 if __name__ == '__main__':
     name = 'himanshu'
 
-    data_path = str(Path.cwd()) + r'\YOLOtoCV2\Sample Data'
+    data_path = str(Path.cwd()) + r'\v1\YOLOtoCV2\Sample Data'
     image_path = data_path + rf'\{name}.jpeg'
     annotation_path = data_path + rf'\{name}\obj_train_data\{name}.txt'
 
