@@ -63,7 +63,7 @@ def tile(bounds, x_start, y_start, size):
     x_extend = (x_max_trunc - x_min_trunc) / size
     y_extend = (y_max_trunc - y_min_trunc) / size
     
-    return (0, x_center, y_center, x_extend, y_extend)
+    return (8, x_center, y_center, x_extend, y_extend)
 
 
 if __name__ == '__main__':

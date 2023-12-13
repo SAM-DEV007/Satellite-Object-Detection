@@ -28,7 +28,7 @@ def tile(bounds, x_start, y_start, size):
     x_extend = (x_max_trunc - x_min_trunc) / size
     y_extend = (y_max_trunc - y_min_trunc) / size
     
-    return (1, x_center, y_center, x_extend, y_extend)
+    return (20, x_center, y_center, x_extend, y_extend)
 
 
 # https://stackoverflow.com/a/64097592/16660603
