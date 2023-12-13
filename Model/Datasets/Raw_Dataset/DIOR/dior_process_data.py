@@ -1,5 +1,5 @@
 from pathlib import Path
-from tqdm.autonotebook import tqdm
+from tqdm import tqdm
 
 import numpy as np
 
@@ -34,7 +34,7 @@ def tile(bounds, x_start, y_start, size):
 
 # https://stackoverflow.com/a/64097592/16660603
 def yolobbox2bbox(coords: list, size: int) -> list:
-    x, y, w, h = coords
+    _c, x, y, w, h = coords
 
     x1 = int((x - w / 2) * size)
     x2 = int((x + w / 2) * size)
@@ -50,7 +50,7 @@ def yolobbox2bbox(coords: list, size: int) -> list:
     if y2 > size - 1:
         y2 = size - 1
 
-    return [x1, y1, x2, y2]
+    return [int(_c), x1, y1, x2, y2]
 
 
 def load_annotation(path: str) -> list:
@@ -81,6 +81,7 @@ def load_img_path(load_data_path: str, img_path: str, labels_path: str) -> tuple
 
 def process_data(mode: str, load_data_list: tuple, save_path: str) -> None:
     img, label = load_img_path(*load_data_list)
+    assert len(img) == len(label), 'Image and label length mismatch'
 
     tile_size = 512
     tile_overlap = 64
@@ -90,7 +91,7 @@ def process_data(mode: str, load_data_list: tuple, save_path: str) -> None:
         if not os.path.isdir(_path):
             os.makedirs(_path)
 
-    for i in tqdm(range(img)):
+    for i in tqdm(range(len(img))):
         image_path = img[i]
         label_path = label[i]
 
