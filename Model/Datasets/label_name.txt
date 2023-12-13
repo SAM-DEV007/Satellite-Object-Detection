@@ -1,2 +1,21 @@
+Storage Tank
+Baseball field
+Tennis court
+Basketball Court
+Wind mill
+Vehicle
+Harbor
+Ship
 Airplane
+Bridge
+Overpass
+Expressway toll station
+Train station
+Chimney
+Ground Track Field
+Dam
+Expressway service area
+Stadium
+Airport
+Golf course
 Lake
