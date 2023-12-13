@@ -83,6 +83,7 @@ def process_data(mode: str, load_data_list: tuple, save_path: str) -> None:
     img, label = load_img_path(*load_data_list)
     assert len(img) == len(label), 'Image and label length mismatch'
 
+    default_size = 800
     tile_size = 512
     tile_overlap = 64
 
@@ -99,6 +100,7 @@ def process_data(mode: str, load_data_list: tuple, save_path: str) -> None:
         _annot_name = os.path.basename(label_path)
 
         image = cv2.imread(image_path)
+        image = cv2.resize(image, (default_size, default_size))
         size = image.shape[0]
 
         annotation_list = load_annotation(label_path)
