@@ -1,0 +1,26 @@
+path: ./Model/Datasets/Model_Dataset
+train: train/images
+val: val/images
+test: test/images
+
+names:
+    0: Storage Tank
+    1: Baseball field
+    2: Tennis court
+    3: Basketball Court
+    4: Wind mill
+    5: Vehicle
+    6: Harbor
+    7: Ship
+    8: Airplane
+    9: Bridge
+    10: Overpass
+    11: Expressway toll station
+    12: Train station
+    13: Chimney
+    14: Ground Track Field
+    15: Dam
+    16: Expressway service area
+    17: Stadium
+    18: Airport
+    19: Golf course

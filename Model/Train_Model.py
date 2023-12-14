@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     model_data_path = str(Path.cwd()) + r'\Model\Model_Data'
 
-    model = YOLO(model_data_path + r'\yolov8n.yaml')
+    model = YOLO('yolov8n.yaml')
     config = """path: ./Model/Datasets/Model_Dataset
 train: train/images
 val: val/images
