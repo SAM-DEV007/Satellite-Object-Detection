@@ -138,7 +138,7 @@ def process_data(mode: str, load_data_list: tuple, save_path: str) -> None:
 
 if __name__ == '__main__':
     data_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\DIOR\Raw'
-    save_path = str(Path.cwd()) + r'\Model\Datasets\Model_Dataset'
+    save_path = str(Path.cwd()) + r'\Model\Model_Data\Model_Dataset'
 
     train_img_name_path = data_path + r'\imageSets\train.txt'
     val_img_name_path = data_path + r'\imageSets\val.txt'
