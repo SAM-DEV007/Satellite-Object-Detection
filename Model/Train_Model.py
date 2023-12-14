@@ -44,13 +44,13 @@ if __name__ == '__main__':
     ]
     config = {
         'path': '',
-        'train': 'Model/Datasets/Model_Dataset/train/images',
-        'val': 'Model/Datasets/Model_Dataset/val/images',
-        'test': 'Model/Datasets/Model_Dataset/test/images',
+        'train': 'Model_Dataset/train/images',
+        'val': 'Model_Dataset/val/images',
+        'test': 'Model_Dataset/test/images',
         'names': {str(i): label for i, label in enumerate(labels)}
     }
     
     with open(model_data_path + r'\config.yaml', 'w') as f:
         yaml.dump(config, f, default_flow_style=False)
     
-    model.train(data=model_data_path + r'\config.yaml', imgsz=512, epochs=50, batch=-1, name='Yolov8')
+    model.train(data=model_data_path + r'\config.yaml', imgsz=800, epochs=50, batch=-1, name='Yolov8')

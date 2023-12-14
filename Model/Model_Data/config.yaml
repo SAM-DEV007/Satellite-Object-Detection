@@ -20,6 +20,6 @@ names:
   '8': Airplane
   '9': Bridge
 path: ''
-test: Model/Datasets/Model_Dataset/test/images
-train: Model/Datasets/Model_Dataset/train/images
-val: Model/Datasets/Model_Dataset/val/images
+test: Model_Dataset/test/images
+train: Model_Dataset/train/images
+val: Model_Dataset/val/images
