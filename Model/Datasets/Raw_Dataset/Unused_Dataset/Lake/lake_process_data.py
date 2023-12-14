@@ -114,8 +114,8 @@ if __name__ == '__main__':
     tile_size = 512
     tile_overlap = 64
 
-    data_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\Lake\Raw'
-    save_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\Lake\Processed'
+    data_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\Unused_Dataset\Lake\Raw'
+    save_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\Unused_Dataset\Lake\Processed'
 
     images_train = os.listdir(data_path + r'\train\images')
     annot_train = os.listdir(data_path + r'\train\annotation')

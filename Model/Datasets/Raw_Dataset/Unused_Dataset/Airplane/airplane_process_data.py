@@ -67,8 +67,8 @@ def tile(bounds, x_start, y_start, size):
 
 
 if __name__ == '__main__':
-    data_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\Airplane\Raw'
-    save_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\Airplane\Processed'
+    data_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\Unused_Dataset\Airplane\Raw'
+    save_path = str(Path.cwd()) + r'\Model\Datasets\Raw_Dataset\Unused_Dataset\Airplane\Processed'
     
     img_list = Path(data_path).glob('images/*.jpg')
 
