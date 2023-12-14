@@ -15,7 +15,10 @@ def tile(bounds, x_start, y_start, size):
         return None
     
     x_max_trunc = min(x_max, size) 
-    x_min_trunc = max(x_min, 0) 
+    x_min_trunc = max(x_min, 0)
+
+    if x_max == x_min or y_max == y_min: return None
+
     if (x_max_trunc - x_min_trunc) / (x_max - x_min) < 0.3:
         return None
 
@@ -147,6 +150,6 @@ if __name__ == '__main__':
     #Train
     process_data('train', (train_img_name_path, img_path, labels_path), save_path)
     # Val
-    process_data('val', (train_img_name_path, img_path, labels_path), save_path)
+    process_data('val', (val_img_name_path, img_path, labels_path), save_path)
     # Test
-    process_data('test', (train_img_name_path, img_path, labels_path), save_path)
+    process_data('test', (test_img_name_path, img_path, labels_path), save_path)
