@@ -1,6 +1,8 @@
 from ultralytics import YOLO
 from pathlib import Path
 
+import yaml
+
 
 if __name__ == '__main__':
     dataset_path = str(Path.cwd()) + r'\Model\Datasets\Model_Dataset'
@@ -18,34 +20,37 @@ if __name__ == '__main__':
     model_data_path = str(Path.cwd()) + r'\Model\Model_Data'
 
     model = YOLO('yolov8n.yaml')
-    config = """path: ./Model/Datasets/Model_Dataset
-train: train/images
-val: val/images
-test: test/images
-
-names:
-    0: Storage Tank
-    1: Baseball field
-    2: Tennis court
-    3: Basketball Court
-    4: Wind mill
-    5: Vehicle
-    6: Harbor
-    7: Ship
-    8: Airplane
-    9: Bridge
-    10: Overpass
-    11: Expressway toll station
-    12: Train station
-    13: Chimney
-    14: Ground Track Field
-    15: Dam
-    16: Expressway service area
-    17: Stadium
-    18: Airport
-    19: Golf course"""
+    labels = [
+        'Storage Tank',
+        'Baseball field',
+        'Tennis court',
+        'Basketball Court',
+        'Wind mill',
+        'Vehicle',
+        'Harbor',
+        'Ship',
+        'Airplane',
+        'Bridge',
+        'Overpass',
+        'Expressway toll station',
+        'Train station',
+        'Chimney',
+        'Ground Track Field',
+        'Dam',
+        'Expressway service area',
+        'Stadium',
+        'Airport',
+        'Golf course'
+    ]
+    config = {
+        'path': '',
+        'train': 'Model/Datasets/Model_Dataset/train/images',
+        'val': 'Model/Datasets/Model_Dataset/val/images',
+        'test': 'Model/Datasets/Model_Dataset/test/images',
+        'names': {str(i): label for i, label in enumerate(labels)}
+    }
     
     with open(model_data_path + r'\config.yaml', 'w') as f:
-        f.write(config)
+        yaml.dump(config, f, default_flow_style=False)
     
-    model.train(data=model_data_path + r'\config.yaml', imgsz=512, epochs=50, batch=6, name='Yolov8')
+    model.train(data=model_data_path + r'\config.yaml', imgsz=512, epochs=50, batch=-1, name='Yolov8')
