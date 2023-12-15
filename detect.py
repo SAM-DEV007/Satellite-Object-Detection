@@ -30,7 +30,7 @@ def create_label_xml(boxes, _img: str) -> None:
     root.append(_data)
 
     for i, d in enumerate(boxes.data):
-        ET.SubElement(_data, str(i)).text = str(d.tobytes())
+        ET.SubElement(_data, str(i)).text = str(d.tolist()).replace('[', '').replace(']', '').replace(',', '')
     
     # Original Shape
     _orig_shape = ET.Element('original_shape')
@@ -44,28 +44,28 @@ def create_label_xml(boxes, _img: str) -> None:
     root.append(_xywh)
 
     for i, d in enumerate(boxes.xywh):
-        ET.SubElement(_xywh, str(i)).text = str(d.tobytes())
+        ET.SubElement(_xywh, str(i)).text = str(d.tolist()).replace('[', '').replace(']', '').replace(',', '')
     
     # xywhn
     _xywhn = ET.Element('xywhn')
     root.append(_xywhn)
 
     for i, d in enumerate(boxes.xywhn):
-        ET.SubElement(_xywhn, str(i)).text = str(d.tobytes())
+        ET.SubElement(_xywhn, str(i)).text = str(d.tolist()).replace('[', '').replace(']', '').replace(',', '')
     
     # xyxy
     _xyxy = ET.Element('xyxy')
     root.append(_xyxy)
 
     for i, d in enumerate(boxes.xyxy):
-        ET.SubElement(_xyxy, str(i)).text = str(d.tobytes())
+        ET.SubElement(_xyxy, str(i)).text = str(d.tolist()).replace('[', '').replace(']', '').replace(',', '')
     
     # xyxyn
     _xyxyn = ET.Element('xyxyn')
     root.append(_xyxyn)
 
     for i, d in enumerate(boxes.xyxyn):
-        ET.SubElement(_xyxyn, str(i)).text = str(d.tobytes())
+        ET.SubElement(_xyxyn, str(i)).text = str(d.tolist()).replace('[', '').replace(']', '').replace(',', '')
 
     tree = ET.ElementTree(root)
     ET.indent(tree, "\t")
