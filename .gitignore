@@ -169,3 +169,6 @@ Model/Datasets/Raw_Dataset/Unused_Dataset/Lake/Raw/
 Model/Datasets/Raw_Dataset/Unused_Dataset/Lake/Processed/
 Model/Datasets/Raw_Dataset/DIOR/Raw/
 Model/Model_Data/Model_Dataset/
+
+# wandb
+Model/Model_Data/wandb/

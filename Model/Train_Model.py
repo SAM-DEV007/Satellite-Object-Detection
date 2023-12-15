@@ -5,6 +5,7 @@ import yaml
 
 
 if __name__ == '__main__':
+    """
     dataset_path = str(Path.cwd()) + r'\Model\Datasets\Model_Dataset'
     train_path = dataset_path + r'\train'
     val_path = dataset_path + r'\val'
@@ -16,6 +17,7 @@ if __name__ == '__main__':
     val_label_path = val_path + r'\labels'
     test_img_path = test_path + r'\images'
     test_label_path = test_path + r'\labels'
+    """
 
     model_data_path = str(Path.cwd()) + r'\Model\Model_Data'
 
@@ -53,4 +55,4 @@ if __name__ == '__main__':
     with open(model_data_path + r'\config.yaml', 'w') as f:
         yaml.dump(config, f, default_flow_style=False)
     
-    model.train(data=model_data_path + r'\config.yaml', imgsz=800, epochs=50, batch=-1, name='Yolov8')
+    model.train(data=model_data_path + r'\config.yaml', imgsz=800, epochs=10, batch=6, name='Yolov8', workers=2)
