@@ -7,12 +7,12 @@ import cv2
 
 
 if __name__ == '__main__':
-    model_path = str(Path.cwd()) + r'/Model/Model_Data/runs/detect/Yolov8/weights/best.pt'
+    model_path = str(Path.cwd()) + r'\Model\Model_Data\runs\detect\Yolov8\weights\best.pt'
 
-    img_path = str(Path.cwd()) + r'/Sample Images'
-    save_img_path = str(Path.cwd()) + r'/Results'
+    img_path = str(Path.cwd()) + r'\Sample Images'
+    save_img_path = str(Path.cwd()) + r'\Results'
     
-    CONF = 0.5
+    CONF = 0.4
     IOU = 0.75
     CLASSES = None # [or list]
 
@@ -28,8 +28,13 @@ if __name__ == '__main__':
 
     model = YOLO(model_path)
 
-    if not os.path.isdir(save_img_path):
+    if not os.path.exists(save_img_path):
         os.mkdir(save_img_path)
+
+    for mode in ('image', 'label'):
+        _path = rf'{save_img_path}\{mode}'
+        if not os.path.isdir(_path):
+            os.mkdir(_path)
 
     img_list = os.listdir(img_path)
     for i in tqdm(range(len(img_list))):
@@ -54,4 +59,13 @@ if __name__ == '__main__':
 
         for r in results:
             arr = r.plot()
-            cv2.imwrite(save_img_path + '/' + img_list[i], arr)
+            cv2.imwrite(save_img_path + '/image/' + img_list[i], arr)
+
+            boxes = r.boxes.cpu().numpy()
+            # cls - Class
+            # conf - Confidence
+            # data - [x, y, x, y, conf, cls]
+            # orig_shape - img_shape
+            # xywh, xywhn, xyxy, xyxyn
+
+        break
