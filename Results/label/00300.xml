@@ -1,0 +1,27 @@
+<annotation>
+	<class>
+		<0>7.0</0>
+	</class>
+	<confidence>
+		<0>0.8070242</0>
+	</confidence>
+	<data>
+		<0>b'\xd6B\x1fD\xf8\xd4LC\xbe\\:D\x1a\xed)D#\x99N?\x00\x00\xe0@'</0>
+	</data>
+	<original_shape>
+		<height>800</height>
+		<width>800</width>
+	</original_shape>
+	<xywh>
+		<0>b'\xca\xcf,DX"\xddC@\xcf\xd8B\xb8o\xedC'</0>
+	</xywh>
+	<xywhn>
+		<0>b'\xee2]?\x9f\x86\r?\x14\xc2\n&gt;\x94\xf5\x17?'</0>
+	</xywhn>
+	<xyxy>
+		<0>b'\xd6B\x1fD\xf8\xd4LC\xbe\\:D\x1a\xed)D'</0>
+	</xyxy>
+	<xyxyn>
+		<0>b'\xac\xdaK?\xa9\x17\x83&gt;1\x8bn?i\x81Y?'</0>
+	</xyxyn>
+</annotation>

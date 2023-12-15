@@ -1,0 +1,34 @@
+<annotation>
+	<class>
+		<0>14.0</0>
+		<1>1.0</1>
+	</class>
+	<confidence>
+		<0>0.89727175</0>
+		<1>0.8517364</1>
+	</confidence>
+	<data>
+		<0>b"\xdc'BC\x00Z\x95ASM$D\x94t4D\x9a\xb3e?\x00\x00`A"</0>
+		<1>b'\xaa8\x1cC\xef\x055DW&gt;\x93C\x81\xeeGDf\x0bZ?\x00\x00\x80?'</1>
+	</data>
+	<original_shape>
+		<height>800</height>
+		<width>800</width>
+	</original_shape>
+	<xywh>
+		<0>b'J\xd7\xd4Cd\x1f\xb9C\xb8\x86\xe7C\xc4\xc9/D'</0>
+		<1>b'\xacZaC8z&gt;D\x04D\nC\x90D\x97B'</1>
+	</xywh>
+	<xywhn>
+		<0>b'\xdd7\x08?\xfb\xf4\xec&gt;C-\x14?C\x02a?'</0>
+		<1>b'\x08:\x90&gt;\xa4\xcfs?\xe6\xfa0&gt;q\x9f\xc1='</1>
+	</xywhn>
+	<xyxy>
+		<0>b"\xdc'BC\x00Z\x95ASM$D\x94t4D"</0>
+		<1>b'\xaa8\x1cC\xef\x055DW&gt;\x93C\x81\xeeGD'</1>
+	</xyxy>
+	<xyxyn>
+		<0>b'\xf1\x84x&gt;\x85+\xbf&lt;\x7fNR?\x9f\xfbf?'</0>
+		<1>b'\x9c\xf6G&gt;\xad\xb5g?\xc1x\xbc&gt;\x9b\xe9\x7f?'</1>
+	</xyxyn>
+</annotation>

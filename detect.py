@@ -5,6 +5,74 @@ from tqdm import tqdm
 import os
 import cv2
 
+import xml.etree.ElementTree as ET
+
+
+def create_label_xml(boxes, _img: str) -> None:
+    root = ET.Element('annotation')
+
+    # Class
+    _cls = ET.Element('class')
+    root.append(_cls)
+
+    for i, c in enumerate(boxes.cls):
+        ET.SubElement(_cls, str(i)).text = str(c)
+    
+    # Confidence
+    _conf = ET.Element('confidence')
+    root.append(_conf)
+
+    for i, c in enumerate(boxes.conf):
+        ET.SubElement(_conf, str(i)).text = str(c)
+    
+    # Data
+    _data = ET.Element('data')
+    root.append(_data)
+
+    for i, d in enumerate(boxes.data):
+        ET.SubElement(_data, str(i)).text = str(d.tobytes())
+    
+    # Original Shape
+    _orig_shape = ET.Element('original_shape')
+    root.append(_orig_shape)
+
+    ET.SubElement(_orig_shape, 'height').text = str(boxes.orig_shape[0])
+    ET.SubElement(_orig_shape, 'width').text = str(boxes.orig_shape[1])
+
+    # xywh
+    _xywh = ET.Element('xywh')
+    root.append(_xywh)
+
+    for i, d in enumerate(boxes.xywh):
+        ET.SubElement(_xywh, str(i)).text = str(d.tobytes())
+    
+    # xywhn
+    _xywhn = ET.Element('xywhn')
+    root.append(_xywhn)
+
+    for i, d in enumerate(boxes.xywhn):
+        ET.SubElement(_xywhn, str(i)).text = str(d.tobytes())
+    
+    # xyxy
+    _xyxy = ET.Element('xyxy')
+    root.append(_xyxy)
+
+    for i, d in enumerate(boxes.xyxy):
+        ET.SubElement(_xyxy, str(i)).text = str(d.tobytes())
+    
+    # xyxyn
+    _xyxyn = ET.Element('xyxyn')
+    root.append(_xyxyn)
+
+    for i, d in enumerate(boxes.xyxyn):
+        ET.SubElement(_xyxyn, str(i)).text = str(d.tobytes())
+
+    tree = ET.ElementTree(root)
+    ET.indent(tree, "\t")
+    
+    with open(_img, 'wb') as f:
+        tree.write(f)
+
 
 if __name__ == '__main__':
     model_path = str(Path.cwd()) + r'\Model\Model_Data\runs\detect\Yolov8\weights\best.pt'
@@ -68,4 +136,4 @@ if __name__ == '__main__':
             # orig_shape - img_shape
             # xywh, xywhn, xyxy, xyxyn
 
-        break
+            create_label_xml(boxes, save_img_path + rf'\label\{img_list[i].split(".")[0]}.xml')
