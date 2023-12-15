@@ -71,7 +71,7 @@ def create_label_xml(boxes, _img: str) -> None:
     ET.indent(tree, "\t")
     
     with open(_img, 'wb') as f:
-        tree.write(f)
+        tree.write(f, encoding='utf-8', xml_declaration=True)
 
 
 if __name__ == '__main__':
