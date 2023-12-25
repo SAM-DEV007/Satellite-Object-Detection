@@ -25,13 +25,21 @@ The idea is to detect how good the model is to detect specific objects along wit
 # Model
 ### v1 Model
 - [v1 Model](/v1/Model) is Yolov5 model initially used. It is a predecessor of Yolov8 model.
+
+### Current Model
 - [Model](/Model) folder consist of Yolov8 model along with the Datasets and training notebooks.
   - [Train_Model.py](/Model/Train_Model.py)
+    - Training configuration for low-end GPU.
   - [Train_Model_NB.ipynb](/Model/Train_Model_NB.ipynb)
+    - Model trained for 50 epochs.
   - [Train_Model_NB_1.ipynb](/Model/Train_Model_NB_1.ipynb)
+    - Same model trained for additional 20 epochs (total 70).
   - [Train_Model_NB_2.ipynb](/Model/Train_Model_NB_2.ipynb)
+    - Same model trained for more additional 20 epochs (total 90).
   - [Train_Model_NB_3.ipynb](/Model/Train_Model_NB_3.ipynb)
+    - Model trained for 20 epochs. Tiled images are used (512 x 512 px).
   - [Train_Model_NB_nodfl.ipynb](/Model/Train_Model_NB_nodfl.ipynb)
+    - Model trained for 50 epochs. DFL loss function is removed.
 
 # Inference
 ## v1 Model
@@ -53,7 +61,16 @@ The idea is to detect how good the model is to detect specific objects along wit
 - [read_xml.py](/read_xml.py) contains a sample code to read one of the XML file in the [Results](/Results) folder.
 
 ### Outputs:
+#### DIOR
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/64378857-d19c-4260-9f36-ae2de85c2e35" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/dc6aee4a-e359-4f83-baee-5ce46b512b8d" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/cbfc848f-81b0-422c-a600-22f68755270e" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/7d4f3c6e-6c1c-473c-aed6-3e8628779bad" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/bc042014-b96e-43f7-ac37-9068f500457d" width=250 height=250>
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/da0e492e-379d-4a94-a805-085217347fd2" width=250 height=250>
 
+#### Bhuvan
+<img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/f615015e-2317-49fe-8f08-26f44bf9292e" width=500 height=500>
 
 # Contribution
 
