@@ -13,6 +13,8 @@ The idea is to detect how good the model is to detect specific objects along wit
 # Installation
 - Python 3.x or greator.
 - Libraries: `pip install -r requirements.txt`
+  
+***(For v1 model)***
 - `git clone https://github.com/ultralytics/yolov5` to clone the model architecture and utilities in `Model_Data` folder.
 
 # Dataset
@@ -20,7 +22,7 @@ The idea is to detect how good the model is to detect specific objects along wit
 - The images are then manually annotated with the respective classes using [CVAT](https://www.cvat.ai/).
 - Another dataset, [DIOR](https://www.kaggle.com/datasets/shuaitt/diordata/data) is used that consists of more than 20,000 images with 800 x 800 px for detecting actual model accuracy.
 
-**NOTE: The datasets used is REALLY small. 10 different 1124 x 1124 px images are used, which are then tiled to ~100 images (training and validation combined). To prevent overfitting, the images are tiled only after splitting in train and validation.**
+**NOTE: The Bhuvan dataset used is REALLY small. 10 different 1124 x 1124 px images are used, which are then tiled to ~100 images (training and validation combined). To prevent overfitting, the images are tiled only after splitting in train and validation.**
 
 # Model
 ### v1 Model
@@ -71,6 +73,11 @@ The idea is to detect how good the model is to detect specific objects along wit
 
 #### Bhuvan
 <img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/f615015e-2317-49fe-8f08-26f44bf9292e" width=500 height=500>
+
+## Overall Comparison
+![image](https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/6a3dc7f2-2892-4c2d-a7ff-55a2c323de47)
+
+***The Bhuvan dataset is always tiled.***
 
 # Contribution
 
