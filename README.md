@@ -1,17 +1,12 @@
 # Satellite-Object-Detection
-The proof of concept of the problem statement for finalist selection in SIF: Space Hackathon 2023 (Student Innovation Festival) by IISF
+RS HR (Remote Sensing High Resolution) Object Detection
 
-# Problem Statement
-The problem statement chosen from the [official](https://bhuvan.nrsc.gov.in/hackathon/iisf2023/) website is the Topic14.
+YOLO model architectures are used to predict the annotation of bounding box (rectangle) of the certain specific objects in the image. 
+Here, only binary classification is used between two classes: Lake and River, for Bhuvan images (moved to [v1](/v1)).
 
-### Feature Extraction from RS HR data using AIML Ex– Farm Pond, Check Dam, Nala Pond, Dug wells, High Tension tower, windmill, electric substation, sewage treatment plant, warehouse
+***NOTE: A third class "Vegetation" is removed, as its definition and marking in the annotation is completely pointless, and somewhat incorrect and would confuse the model more.***
 
-**The features Farm Pond, Check Dam, Nala Pond, Dug wells, High Tension tower, windmill, electric substation, sewage treatment plant, warehouse require high resolution datasets. On the fly feature extraction and display the features detected by the model. Since more than a single feature is possible in a scene, model the problem as a multi-label feature extraction.**
-
-# Approach
-The approach is to use a YOLO model architecture to predict the annotation of bounding box (rectangle) of the certain specific objects in the image. Here, only binary classification is used between two classes: Lake and River.
-
-**NOTE: A third class "Vegetation" is removed, as its definition and marking in the annotation is completely pointless, and somewhat incorrect and would confuse the model more.**
+For the DIOR dataset, it consist of 20 classes of Remote Sensing data along with annotation.
 
 The idea is to detect how good the model is to detect specific objects along with generalized objects with close bounding box links.
 
@@ -23,10 +18,23 @@ The idea is to detect how good the model is to detect specific objects along wit
 # Dataset
 - The dataset is hand-picked using the [Bhuvan](https://bhuvan-app3.nrsc.gov.in/data/download/index.php#) portal.
 - The images are then manually annotated with the respective classes using [CVAT](https://www.cvat.ai/).
+- Another dataset, [DIOR](https://www.kaggle.com/datasets/shuaitt/diordata/data) is used that consists of more than 20,000 images with 800 x 800 px for detecting actual model accuracy.
 
 **NOTE: The datasets used is REALLY small. 10 different 1124 x 1124 px images are used, which are then tiled to ~100 images (training and validation combined). To prevent overfitting, the images are tiled only after splitting in train and validation.**
 
+# Model
+### v1 Model
+- [v1 Model](/v1/Model) is Yolov5 model initially used. It is a predecessor of Yolov8 model.
+- [Model](/Model) folder consist of Yolov8 model along with the Datasets and training notebooks.
+  - [Train_Model.py](/Model/Train_Model.py)
+  - [Train_Model_NB.ipynb](/Model/Train_Model_NB.ipynb)
+  - [Train_Model_NB_1.ipynb](/Model/Train_Model_NB_1.ipynb)
+  - [Train_Model_NB_2.ipynb](/Model/Train_Model_NB_2.ipynb)
+  - [Train_Model_NB_3.ipynb](/Model/Train_Model_NB_3.ipynb)
+  - [Train_Model_NB_nodfl.ipynb](/Model/Train_Model_NB_nodfl.ipynb)
+
 # Inference
+## v1 Model
 ### Commands:
 - `python .\Model\Dataset\dataset.yaml --weights .\Model\Model_Data\yolov5s.pt` to train the model. The best weights will be saved in `.\yolov5\runs\train\exp\weights\best.pt`.
 - `python .\Model\Model_Data\yolov5\detect.py --source .\Model\Model_Data\best.pt --conf 0.2` to run the inference on the images folder and detect the classes. For this model, the optimal confidence is `0.2`.
@@ -38,6 +46,14 @@ The idea is to detect how good the model is to detect specific objects along wit
 <img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/f386a375-d1f3-4345-ac32-eeb4e1ab981c" width=250 height=250>
 <img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/432ea8b4-6caf-47dd-b1e2-50577c4e2d65" width=250 height=250>
 <img src="https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/7d4aaf58-8f11-45d7-9730-e585104fb561" width=250 height=250>
+
+## Current Model
+### Commands:
+- [detect.py](/detect.py) to detect the images in [Sample Images](/Sample%20Images) folder. [Results](/Results) folder will contain the detected image and generate a XML file of their annotation along with other metadata.
+- [read_xml.py](/read_xml.py) contains a sample code to read one of the XML file in the [Results](/Results) folder.
+
+### Outputs:
+
 
 # Contribution
 
