@@ -84,3 +84,4 @@ The idea is to detect how good the model is to detect specific objects along wit
 1. Samyak Waghdhare
 2. Giridhar Bargaley
 3. Rudra Shrivastava
+4. Himanshu Mathankar
