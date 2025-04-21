@@ -10,7 +10,7 @@ fonttools==4.46.0
 fsspec==2023.12.2
 idna==3.6
 imageio==2.33.1
-Jinja2==3.1.2
+Jinja2==3.1.6
 kiwisolver==1.4.5
 lazy_loader==0.3
 MarkupSafe==2.1.3
