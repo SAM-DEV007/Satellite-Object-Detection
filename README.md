@@ -78,10 +78,3 @@ The idea is to detect how good the model is to detect specific objects along wit
 ![image](https://github.com/SAM-DEV007/Satellite-Object-Detection/assets/60264918/6a3dc7f2-2892-4c2d-a7ff-55a2c323de47)
 
 ***The Bhuvan dataset is always tiled.***
-
-# Contribution
-
-1. Samyak Waghdhare
-2. Giridhar Bargaley
-3. Rudra Shrivastava
-4. Himanshu Mathankar
